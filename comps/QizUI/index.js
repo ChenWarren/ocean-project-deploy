@@ -1,29 +1,52 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import {QizImg, QizInfo, QizTitle, QizText, QWrapper, QizImgW} from '../../styles/style'
+import {QizImg, QizInfo, QizTitle, QizText, QWrapper, QizImgW, QizState, QizSelectT, QizSelectF} from '../../styles/style'
 
 const QizWrapper = styled.div `${QWrapper}`
+
 
 const QizUI = ({
     imgSrc = 'car.svg',
     qizTitle = 'Question 1',
     qizText = 'This is first question',
-    qizIndex = '1',
-    borderSize = '0', 
+    isTrue = null,
+    qizIndex = null,
+    qizId = null,
+    selectScore = null,
+    borderSizeT = '0',
+    borderSizeF = '0',  
     callBack =()=>{}
 }) =>
 {
-    const [border, setBorder] = useState(false)
+    const [borderT, setBorderT] = useState(false)
     
-    const borderHandle = () =>
+    const borderHandleT = () =>
     {
-        setBorder(!border)
-        {qizIndex}
-        callBack(border, qizIndex)
-    }
+        setBorderT(true)
+        setBorderF(false)
+        selectScore = true        
+
+        if(borderT==false)
+        {
+            callBack(qizId, selectScore)
+        }
+    } 
     
+    const [borderF, setBorderF] = useState(false)
     
-    return <QizWrapper onClick={borderHandle} borderSize={border ? '2' : '0'} >
+    const borderHandleF = () =>
+    {
+        setBorderF(true)
+        setBorderT(false)
+        selectScore = false
+
+        if(borderF==false)
+        {
+            callBack(qizId, selectScore)
+        }
+    } 
+
+    return <QizWrapper >
         <QizImgW>
             <QizImg src={imgSrc} />
         </QizImgW>
@@ -31,6 +54,14 @@ const QizUI = ({
             <QizTitle>{qizTitle}</QizTitle>
             <QizText>{qizText}</QizText>
         </QizInfo>
+        <QizState>
+            <QizSelectT onClick={borderHandleT} borderSizeT={borderT ? '2' : '0'}>
+                True
+            </QizSelectT>
+            <QizSelectF onClick={borderHandleF} borderSizeF={borderF ? '2' : '0'}>
+                False
+            </QizSelectF>
+        </QizState>
     </QizWrapper>
 }
 
