@@ -87,8 +87,8 @@ export const QizSelectF = styled.div`
 `
 
 export const QizImg = styled.img `
-    height:100px;
-    width: 100px;
+    height:70px;
+    width: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
