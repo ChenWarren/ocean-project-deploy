@@ -47,8 +47,8 @@ export default function S3page({
                 <QuizIndeUI text='Quiz3' displayColor = {1}/>
             </S3top>
             <S3Content>
-                <S3text titleColor='yellow' textTitle='Your Final Score ' textBody={finalScore + ' / 100'}></S3text>
                 <S3text titleColor='yellow' textTitle='Score for this Quiz' textBody={score3 + ' / 100'}></S3text>
+                <S3text titleColor='yellow' textTitle='Your Final Score ' textBody={finalScore + ' / 100'}></S3text>
             </S3Content>
             <S3Content onClick={answerHandle}>
                 <SimBtn text={ answer? 'Close Answer' : 'Check Answers' } bgColor='#98A633' />
