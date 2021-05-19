@@ -19,4 +19,8 @@ export const MenuData = [
         mRouter: '/quiz1',
         barText: 'Quiz'
     },
+    {
+        mRouter: '/about',
+        barText: 'About'
+    }
 ]
